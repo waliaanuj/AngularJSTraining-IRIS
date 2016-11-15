@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link type="text/css" href="css/angular-ui-tree.min.css"/>
+    <link type="text/css" href="css/bootstrap.min.css"/>
+    <link type="text/css" href="css/my-ui-tree.css"/>
+    <script type="text/javascript" src="js/angular.js"></script>
+    <script type="text/javascript" src="js/angular-ui-tree.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.2.js"></script>
+    <script type="text/javascript">
+        var myAppModule = angular.module('MyApp', ['ui.tree']);
+        myAppModule.controller('MyController',function($scope){
+            $scope.options = {
+                accept: function (src, dest, destIndex) {
+                    console.log("*****************accept called*********************");
+                    console.log(src);
+                    console.log(dest);
+                    var data = src.$modelValue;
+                    console.log(data);
+                    var destType = dest.$element.attr('data-type');
+                    console.log('source: ' + data.type + ' target: ' + destType);
+                    return (data.type == destType); // only accept the same type
+                }
+            };
+            $scope.list = [
+            {
+                "id": 1,
+                "title": "node1",
+                "nodes": [
+                    {
+                        "id": 11,
+                        "title": "node1.1",
+                        "nodes": [
+                            {
+                                "id": 111,
+                                "title": "node1.1.1",
+                                "nodes": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 12,
+                        "title": "node1.2",
+                        "nodes": []
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "title": "node2",
+                "nodes": [
+                    {
+                        "id": 21,
+                        "title": "node2.1",
+                        "nodes": []
+                    },
+                    {
+                        "id": 22,
+                        "title": "node2.2",
+                        "nodes": []
+                    }
+                ]
+            },
+            {
+                "id": 3,
+                "title": "node3",
+                "nodes": [
+                    {
+                        "id": 31,
+                        "title": "node3.1",
+                        "nodes": []
+                    }
+                ]
+            },
+            {
+                "id": 4,
+                "title": "node4",
+                "nodes": [
+                    {
+                        "id": 41,
+                        "title": "node4.1",
+                        "nodes": []
+                    }
+                ]
+            }
+        ];
+
+
+        $scope.dataList = [
+            {
+                "id": 1,
+                "title": "node1",
+                nodes:[
+                    {
+                        "id": 1.1,
+                        "title": "node1.1"
+                    },
+                    {
+                        "id": 1.2,
+                        "title": "node1.2"
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "title": "node2"
+            },
+            {
+                "id": 3,
+                "title": "node3"
+            },
+            {
+                "id": 4,
+                "title": "node4"
+
+            }
+        ];
+            $scope.clickHandler= function(){
+                console.log(this.collapsed);
+                this.collapse();
+                console.log(this.collapsed)
+            };
+
+        });
+
+
+    </script>
+</head>
+<body ng-app="MyApp" ng-controller="MyController">
+<script type="text/ng-template" id="nodes_renderer.html">
+    <div class="wrapper">
+        <div ui-tree-handle>
+            {{node.title}}
+        </div>
+        <ol ui-tree-nodes ng-model="node.nodes" datatype="node"  >
+            <div ng-repeat="node in node.nodes"  ui-tree-node data-ng-click="clickHandler()"
+                ng-include="'nodes_renderer.html'"  >
+            </div>
+        </ol>
+
+    </div>
+</script>
+<div ui-tree="options" id="tree-root" class="wrapper">
+    <ol ui-tree-nodes ng-model="dataList" datatype="node">
+        <div ng-repeat="node in list" data-ng-click="clickHandler()" ui-tree-node data-nodrag ng-include="'nodes_renderer.html'"
+                >
+
+        </div>
+    </ol>
+</div>
+
+
+</body>
+</html>

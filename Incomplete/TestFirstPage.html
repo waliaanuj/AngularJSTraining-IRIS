@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="application/javascript" src="js/angular.js"/>
+    <script type="application/javascript" src="js/Test1.js"/>
+    <script type="application/javascript">
+        function MyController($scope){
+            console.log("********************Anuj*****************");
+            console.log($scope);
+            console.log(this);
+            console.log("********************Walia*****************");
+        }
+    </script>
+</head>
+<body ng-app ng-init="qty=1;cost=2">
+<br/>
+{{2*3}}
+<br/>
+<input type="text" ng-model="message">
+<br/>
+{{message}}
+<br/>
+
+<div ng-app>
+
+    another ng app
+    <pre>
+        Angular implicitly supports following design patterns
+        1. MVC
+        2. Singleton
+        3. Factory
+
+    </pre>
+    <pre>
+        Angular provides us with SPA implementation
+        It provides us with new HTML directives called ng directives
+        for implementing and binding the data
+        AngularJS is segregated in 4 parts:
+        1. Angular ng function
+        2. Angular ng directives
+        3. Angular ng providers
+        4. Angular ng services
+
+        Angular provides us integration JQuery, KendoUI
+
+        For unit testing we can integrate it with Karma.js
+    </pre>
+    <pre>
+        Three Major directives in angular
+        ng-app
+        ng-model
+        ng-bind
+
+    </pre>
+    <pre ng-controller="MyController">
+        You can define a controller via ng-controller. The controller is a javaScript function which contains
+         implicit angular object called $scope. This can be used for defining properties inside controller which can
+        then act as models.
+        Question
+        How can two controllers communicate?
+        Difference between $scope and this?
+
+
+        Syntax:
+        function MyCtrl($scope){}
+
+    </pre>
+    <div>
+        <b> Invoice </b>
+        <div>
+           <b> Quantity: </b> <input  type="number" min="0" ng-model="qty">
+        </div>
+        <div>
+           <b> Cost: </b> <input  type="number" min="0" ng-model="cost">
+        </div>
+        <div>
+            <b> Total: </b> {{qty*cost | currency}}
+        </div>
+    </div>
+    <div>
+        Angular provides us with various filters
+
+        https://docs.angularjs.org/api/ng/filter
+
+        Writing a custom filter in AngularJS
+
+    </div>
+</div>
+</body>
+</html>

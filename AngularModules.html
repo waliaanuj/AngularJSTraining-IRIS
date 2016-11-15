@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html  ng-app="myApp">
+<head lang="en"  >
+    <meta charset="UTF-8">
+    <title>My First Page</title>
+    <script type="application/javascript" src="js/angular.js"/>
+    <script type="application/javascript">
+        var app = angular.module("myApp",[]);
+        app.controller("myController", function($scope){
+
+            $scope.helloTo={};
+            $scope.helloTo.title = "World,AngularJS";
+                    $scope.firstName="Anuj";
+                    $scope.lastName="Walia";
+                    $scope.fullName = function (){
+                        var x= $scope.helloTo;
+                        return x.firstName+ "" + x.lastName;
+                    }
+        });
+        app.controller("myCtrl", function() {
+            var self = this;
+            self.firstName = "John";
+            self.lastName = "Doe";
+            self.alertUser = function(){
+
+                alert("User Alerted!!");
+            }
+        });
+    </script>
+</head>
+<body>
+<div id="bodyDiv" ng-controller="myController">
+<div>
+Normal Controller
+</div>
+<div>
+Controller As
+</div>
+</div>
+</body>
+</html>

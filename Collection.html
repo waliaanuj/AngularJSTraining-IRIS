@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html  ng-app="myApp">
+<head lang="en"  >
+    <meta charset="UTF-8">
+    <title>Collections</title>
+    <script type="application/javascript" src="js/angular.js"></script>
+    <script type="application/javascript" src="js/Collection.js"></script>
+</head>
+<body>
+<div id="bodyDiv" ng-controller="myCtrl as ctrl">
+  <table border="1">
+    <tr><th>Name</th><th>Country</th></tr>
+      <tr ng-repeat="x in ctrl.records">
+          <td>{{x.Name}}</td>
+          <td>{{x.Country}}</td>
+      </tr>
+  </table>
+  <br/><br/>
+  <table border="1">
+    <tr><th>Department</th></tr>
+    <tr ng-repeat="y in ctrl.duplicateRecords track by $index">
+          <td>{{y}}</td>
+      </tr>
+  </table>
+</div>
+</body>
+</html>

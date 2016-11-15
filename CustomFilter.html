@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title></title>
+    <script type="text/javascript" src="js/angular.js"></script>
+    <script type="text/javascript" src="js/CustomFilter.js"></script>
+
+
+</head>
+<body ng-app="myReverseModule" >
+<div ng-controller="myController">
+     <input ng-model="greeting" type="text"><br>
+No filter: {{greeting}}<br>
+Reverse: {{greeting|reverse}}<br>
+Reverse + uppercase:{{greeting|reverse:true}}<br>
+    <button ng-click="spicyFunction()"> Click Me</button>
+    <button data-ng-click="spicyFunction()">Click Me with Data</button>
+    What is the difference between ng-click and data-ng-click
+</div>
+</body>
+</html>

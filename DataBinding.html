@@ -2,12 +2,12 @@
 <html  ng-app="myApp">
 <head lang="en"  >
     <meta charset="UTF-8">
-    <title>My First Page</title>
+    <title>Data Binding</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script type="application/javascript" src="js/angular.js"></script>
     <script type="application/javascript" src="js/Application.js"></script>
     <style>
-    html,body { background: linear-gradient(135deg, red, blue); 
+    html,body { background: linear-gradient(135deg, red, blue);
                 height: 100%;
                 width: 100%;
                 }
@@ -18,12 +18,13 @@
 </head>
 <body>
 <div id="bodyDiv" ng-controller="myController">
-<div>
-Normal Controller
-</div>
-<div>
-Controller As
-</div>
+First Name:{{firstName}}<br/>
+Last Name: {{lastName}}<br/>
+Full Name: {{fullName()}}<br/>
+Enter Age <input type="text" id="inputAge" ng-model="age"/>
+Enter DepartMent<input type="text" id="inputDepartment" ng-model="department"/><br/>
+<span ng-bind="age"> </span> <span ng-show="age">is the age</span> </br>
+<span ng-bind="department"> </span> <span ng-show="department">is the department</span>
 </div>
 </body>
 </html>
